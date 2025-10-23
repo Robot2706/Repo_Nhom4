@@ -1,0 +1,6 @@
+├── 📁 diagrams/                   ← Hình mô tả, flowchart, system diagram
+│   ├── system_diagram.png
+│   ├── flowchart_recommendation.png
+│   ├── data_flow.png
+│   └── architecture.drawio
+│
