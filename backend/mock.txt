@@ -1,0 +1,5 @@
+│   ├── app.py                     ← Flask/FastAPI main
+│   ├── recommend.py               ← Hàm gợi ý chính
+│   ├── utils.py                   ← Hàm phụ (tính khoảng cách, filter,...)
+│   └── tests/                     ← Unit test cho backend
+│       └── test_recommend.py
