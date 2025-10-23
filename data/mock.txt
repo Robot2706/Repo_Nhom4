@@ -1,0 +1,7 @@
+
+│   ├── raw/                       ← Dữ liệu gốc (Kaggle, CSV chưa sạch)
+│   │   └── hotels_raw.csv
+│   ├── cleaned/                   ← Dữ liệu sau khi xử lý
+│   │   └── hotels_cleaned.csv
+│   ├── schema.md                  ← Giải thích các cột trong CSV
+│   └── preprocess.ipynb           ← Notebook làm sạch dữ liệu
