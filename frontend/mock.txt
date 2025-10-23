@@ -1,0 +1,11 @@
+├── 📁 frontend/                   ← Giao diện web
+│   ├── app.py                     ← (Nếu dùng Streamlit)
+│   ├── templates/                 ← (Nếu Flask)
+│   │   ├── index.html
+│   │   └── result.html
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── js/
+│   │       └── main.js
+│   └── components.md              ← Mô tả UI, form, map
