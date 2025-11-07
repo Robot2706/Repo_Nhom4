@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    /* cố định khi cuộn trang */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* chiều cao = toàn bộ khung nhìn */
+
+    background: url("assets/background.jpg") center / cover no-repeat;
+    background-color: lightgray;
+    /* màu dự phòng */
+
+    z-index: -1;
+    /* nằm sau nội dung khác */
+}
+
+/*Fonts*/
+.paragraph200Medium_white {
+    color: var(--Theme-White, #FFF);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.paragraph200Medium_black {
+    color: var(--Theme-Body, #161414);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.heading100 {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 62px;
+}
+
+.heading200 {
+    color: var(--Theme-Body, #161414);
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px;
+}
+
+.heading400 {
+    color: var(--Theme-Body, #161414);
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+}
