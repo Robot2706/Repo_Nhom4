@@ -1,0 +1,13 @@
+smart-accommodation/
+├─ backend/
+│  ├─ src/
+│  ├─ data/
+│  │   ├─ raw/          # dữ liệu cào thô từ web
+│  │   │   ├─ booking_raw_2025-11-08.json
+│  │   ├─ processed/    # dữ liệu đã clean, chuẩn hoá, dùng cho recommend
+│  │   │   ├─ hotels_clean.parquet
+│  │   │   └─ hotels_clean.csv
+│  │   └─ README_DATA.md  # giải thích sơ data
+│  └─ ...
+├─ frontend/
+└─ ...
