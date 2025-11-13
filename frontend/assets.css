@@ -1,0 +1,71 @@
+.box-mainmenu {
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+    border-radius: 12px;
+    background: var(--Theme-Primary, #7B61FF);
+}
+
+.search-row {
+    display: flex;
+    justify-content: space-between;
+    /* 🔥 Tự dàn đều các phần tử theo chiều ngang */
+    align-items: center;
+    /* 🔥 Căn giữa theo chiều dọc */
+
+    width: 100%;
+    max-width: 1140px;
+    height: 60px;
+    padding: 8px 16px;
+    /* khoảng đệm trong container */
+    gap: 80px;
+    /* khoảng cách nhỏ giữa các item (nếu cần) */
+    white-space: nowrap;
+
+    position: absolute;
+    top: 550px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 12px;
+    background: var(--Theme-White, #FFF);
+}
+
+
+.input-search-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    /* xếp hàng ngang */
+    align-items: center;
+    /* căn giữa theo chiều dọc */
+    justify-content: flex-start;
+    /* căn từ trái sang phải */
+    gap: 10px;
+    /* khoảng cách giữa các item */
+
+    background: var(--Theme-White, #FFF);
+    padding: 8px 16px;
+    border-radius: 12px;
+
+    width: max-content;
+    /* vừa đủ nội dung */
+    max-width: 300px;
+    flex-shrink: 1;
+}
+
+
+.text-search-row {
+    position: absolute;
+    transform: translateX(36px);
+
+}
