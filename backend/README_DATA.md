@@ -10,7 +10,7 @@ backend/
 │  │   └─ hotel.py, user_preference.py ...
 │  ├─ services/                              # logic xử lý
 │  │   ├─ recommender.py                     # thuật toán gợi ý
-│  │   └─ scraping.py                        # cào data (nếu backend xử lý)
+│  │   └─ booking_scraper.py                        # cào data (nếu backend xử lý)
 │  ├─ data/                                  # file JSON/CSV giả lập, sqlite db nhỏ
 │  ├─ config/                                # config DB, API key, constant
 │  └─ utils/                                 # hàm phụ trợ (validate input, log,…)
