@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2rism</title>
+    
+    <link rel="stylesheet" href="./chatBot.css">
+    <link rel="stylesheet" href="../../layout.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script type="module" src="./chatBot.js" defer></script>
+</head>
+<body>
+    <div class="background-main"></div>
+    
+    <div class="mainmenu-container" id="menuScreen" style="display: none;">
+        </div>
+    
+    <div class="results-screen" id="resultsScreen" style="display: flex;">
+        <div class="main-content-wrapper">
+            <header class="ai-header">
+                <img src="../../assets/section/logo.svg" alt="2rism Logo" class="header-logo">
+                <i class="fas fa-home home-icon"></i> <i class="fas fa-chevron-down dropdown-icon"></i> 
+            </header>
+
+            <div class="carousel-container">
+                <button class="nav-button prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+
+                <div class="card-list" id="cardList">
+                    
+                    <div class="hotel-card" data-index="0">
+                        <div class="card-content-wrapper">
+                            <div class="card-details">
+                                <div class="details-header">
+                                    <h1 class="card-title heading300">Hotel name</h1>
+                                    <span class="card-rating paragraph200regular">RATING</span>
+                                </div>
+                                <p class="card-description paragraph200regular">Thông tin chi tiết: <br> - Giới thiệu ngắn... <br> - Price: ... <br> - Address: ...</p>
+                                <div class="contact-info">
+                                    <h2 class="card-title heading400">Contact us</h2>
+                                    <span class="contact-icon">📞</span> 
+                                    <a href="tel:0909123456" class="contact-text">0909 123 456</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-index="1">
+                         <div class="card-content-wrapper">
+                            <div class="card-details">
+                                <div class="details-header">
+                                    <h1 class="card-title heading300">Hotel name</h1>
+                                    <span class="card-rating paragraph200regular">RATING</span>
+                                </div>
+                                <p class="card-description paragraph200regular">Thông tin chi tiết: <br> - Giới thiệu ngắn... <br> - Price: ... <br> - Address: ...</p>
+                                <div class="contact-info">
+                                    <h2 class="card-title heading400">Contact us</h2>
+                                    <span class="contact-icon">📞</span> 
+                                    <a href="tel:0909123456" class="contact-text">0909 123 456</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-index="2">
+                         <div class="card-content-wrapper">
+                            <div class="card-details">
+                                <div class="details-header">
+                                    <h1 class="card-title heading300">Hotel name</h1>
+                                    <span class="card-rating paragraph200regular">RATING</span>
+                                </div>
+                                <p class="card-description paragraph200regular">Thông tin chi tiết: <br> - Giới thiệu ngắn... <br> - Price: ... <br> - Address: ...</p>
+                                <div class="contact-info">
+                                    <h2 class="card-title heading400">Contact us</h2>
+                                    <span class="contact-icon">📞</span> 
+                                    <a href="tel:0909123456" class="contact-text">0909 123 456</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="nav-button next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="ask-bar-container">
+                <input type="text" placeholder="Ask something..." class="ask-input">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
