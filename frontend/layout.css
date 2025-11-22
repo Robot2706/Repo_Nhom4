@@ -1,11 +1,13 @@
 /* Trong này bao gồm backgrounds, fonts, và container */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-body {
-    margin: 0;
-    padding: 0;
+/* BỔ SUNG CÁC BIẾN MÀU CẦN THIẾT */
+:root {
+    --Theme-White: #FFF;
+    --Theme-Body: #161414;
+    --Theme-Body_muted: #979797;
+    --Main-Dark-BG: #0A0A0A; 
 }
-
 /*Setting up backgrounds*/
 .background-main {
     position: fixed;
@@ -13,7 +15,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url("assets/background.jpg") center / cover no-repeat;
+    background: url("./assets/background.jpg") center / cover no-repeat;
     background-color: lightgray;
     z-index: -1;
 }
@@ -140,4 +142,197 @@ body {
     display: flex;
     align-items: center;
     white-space: nowrap;
+}
+
+
+/* CONTAINER CHÍNH CỦA MÀN HÌNH KẾT QUẢ */
+.results-screen {
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CONTAINER BỌC NỘI DUNG */
+.main-content-wrapper {
+    position: relative; 
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding-bottom: 120px; 
+    box-sizing: border-box;
+}
+
+/* HEADER ĐƠN GIẢN (2rism) */
+.ai-header {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+}
+.ai-header .logo-text {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.dropdown-icon {
+    font-size: 0.8em;
+    color: #fff;
+    opacity: 0.8;
+}
+
+/* CSS CHO CAROUSEL (HIỆU ỨNG TRƯỢT THẺ) */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px; 
+    height: 60vh; 
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; 
+}
+.card-list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+.hotel-card {
+    position: absolute; /* RẤT QUAN TRỌNG */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); 
+    opacity: 0.3;
+    transition: all 0.5s ease-in-out; /* Chỉ là dự phòng, JS sẽ dùng anime.js */
+
+    width: 90%; 
+    max-width: 1000px;
+    height: 480px;
+    padding: 30px;
+    border-radius: 20px;
+    
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    z-index: 1; 
+    box-sizing: border-box;
+}
+.hotel-card.active {
+    z-index: 10;
+}
+.card-content-wrapper {
+    display: flex;
+    height: 100%;
+    gap: 30px;
+}
+.card-image-placeholder {
+    width: 45%;
+    background-color: rgba(255, 255, 255, 0.15); 
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
+.card-details {
+    width: 55%;
+    text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+/* Điều chỉnh màu chữ trong thẻ cho dễ đọc (theo Figma) */
+.card-details .card-title {
+    color: var(--Theme-Body, #161414); /* Màu đen */
+}
+.card-details .card-rating {
+    color: var(--Theme-Body, #161414); /* Màu đen */
+    opacity: 0.7;
+}
+.card-details .card-description {
+     color: var(--Theme-Body_muted, #979797); /* Màu xám */
+}
+.card-details .contact-btn {
+    margin-top: auto; 
+    align-self: flex-start;
+    padding: 10px 0;
+    opacity: 0.7;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--Theme-Body, #161414); /* Màu đen */
+    font-size: 1em;
+    font-weight: 600;
+}
+
+/* NÚT TRƯỢT (NAVIGATION BUTTONS) */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    transition: background 0.3s;
+}
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+.nav-button.prev {
+    left: 20px;
+}
+.nav-button.next {
+    right: 20px;
+}
+
+/* THANH INPUT CHATBOT CỐ ĐỊNH */
+.ask-bar-container {
+    position: fixed; 
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.ask-input {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(8px); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
 }
