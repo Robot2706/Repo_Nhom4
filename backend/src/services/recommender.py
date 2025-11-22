@@ -1,4 +1,3 @@
-
 """
 recommender_module.py
 Recommender module for Hotel Recommendation POC
@@ -7,6 +6,7 @@ Provides:
 - dataclasses: UserInput, Hotel
 - functions: hard_filter, compute_price_fit, compute_rating_fit, compute_score,
              search_with_expansion, generate_mock_hotels
+- JSON export functions: export_results_to_json, export_hotels_to_json
 - constants for default parameters and purpose weights / rating floors
 
 Usage:
@@ -15,13 +15,14 @@ Usage:
 >>> inp = UserInput(district="Quận 3", budget_min=900000, budget_max=1400000, purpose="business",
 ...                 check_in="2025-11-14", check_out="2025-11-15", topN=5)
 >>> results, meta = search_with_expansion(hotels, inp, topN=5)
->>> print(results, meta)
+>>> export_results_to_json(results, meta, "results.json")
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from typing import List, Tuple, Dict, Any
 from datetime import datetime, date
 import random
+import json
 
 # --------------------------- Utilities ---------------------------
 def clamp(x: float, lo: float = 0.0, hi: float = 1.0) -> float:
@@ -203,6 +204,88 @@ def search_with_expansion(hotels: List[Hotel], inp: UserInput, topN: int = 5,
             current_tau_high = current_tau_high * 1.5
         attempt += 1
 
+# --------------------------- JSON Export Functions ---------------------------
+def export_results_to_json(results: List[Dict[str, Any]], meta: Dict[str, Any], 
+                           filepath: str, indent: int = 2) -> None:
+    """
+    Export search results and metadata to a JSON file.
+    
+    Args:
+        results: List of hotel dictionaries from search_with_expansion
+        meta: Metadata dictionary from search_with_expansion
+        filepath: Path to output JSON file
+        indent: JSON indentation (default: 2)
+    """
+    output = {
+        "results": results,
+        "meta": meta,
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(output, f, ensure_ascii=False, indent=indent)
+    
+    print(f"Results exported to {filepath}")
+
+def export_hotels_to_json(hotels: List[Hotel], filepath: str, indent: int = 2) -> None:
+    """
+    Export a list of Hotel objects to a JSON file.
+    
+    Args:
+        hotels: List of Hotel dataclass instances
+        filepath: Path to output JSON file
+        indent: JSON indentation (default: 2)
+    """
+    hotels_data = [asdict(h) for h in hotels]
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(hotels_data, f, ensure_ascii=False, indent=indent)
+    
+    print(f"Hotels exported to {filepath}")
+
+def load_hotels_from_json(filepath: str) -> List[Hotel]:
+    """
+    Load hotels from a JSON file.
+    
+    Args:
+        filepath: Path to JSON file containing hotel data
+    
+    Returns:
+        List of Hotel dataclass instances
+    """
+    with open(filepath, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    
+    hotels = [Hotel(**h) for h in data]
+    print(f"Loaded {len(hotels)} hotels from {filepath}")
+    return hotels
+
+def rank_and_export(hotels: List[Hotel], user_inputs: List[UserInput], 
+                    output_dir: str = ".", topN: int = 10) -> None:
+    """
+    Rank hotels for multiple user queries and export each result to JSON.
+    
+    Args:
+        hotels: List of all available hotels
+        user_inputs: List of UserInput queries to process
+        output_dir: Directory to save JSON files (default: current directory)
+        topN: Number of top results per query
+    """
+    import os
+    os.makedirs(output_dir, exist_ok=True)
+    
+    for idx, inp in enumerate(user_inputs, 1):
+        results, meta = search_with_expansion(hotels, inp, topN=topN)
+        
+        # Create filename from query parameters
+        filename = f"results_{idx}_{inp.district.replace(' ', '_')}_{inp.purpose}.json"
+        filepath = os.path.join(output_dir, filename)
+        
+        # Add query info to meta
+        meta['query'] = asdict(inp)
+        
+        export_results_to_json(results, meta, filepath)
+
 # --------------------------- Mock data generator (useful for testing) ---------------------------
 def generate_mock_hotels(n: int = 50, seed: int = 1) -> List[Hotel]:
     random.seed(seed)
@@ -225,11 +308,38 @@ def generate_mock_hotels(n: int = 50, seed: int = 1) -> List[Hotel]:
 
 # --------------------------- Quick demo when run as script ---------------------------
 if __name__ == "__main__":
-    hotels = generate_mock_hotels(999)
-    inp = UserInput(district="Quận 3", budget_min=900000, budget_max=1400000, purpose="business",
-                    check_in="2025-11-14", check_out="2025-11-15", topN=5)
+    # Generate mock hotels
+    hotels = generate_mock_hotels(120, seed=42)
+    
+    # Export all hotels to JSON
+    export_hotels_to_json(hotels, "all_hotels.json")
+    
+    # Single query example
+    inp = UserInput(
+        district="Quận 3", 
+        budget_min=900000, 
+        budget_max=1400000, 
+        purpose="business",
+        check_in="2025-11-14", 
+        check_out="2025-11-15", 
+        topN=5
+    )
     results, meta = search_with_expansion(hotels, inp, topN=5)
-    print("Search meta:", meta)
-    print("Top results:")
+    
+    # Export single result
+    export_results_to_json(results, meta, "search_results.json")
+    
+    print("\nSearch meta:", meta)
+    print(f"\nTop {len(results)} results:")
     for r in results:
-        print(r)
+        print(f"  {r['name']}: score={r['score']}, price={r['price']}, rating={r['rating']}")
+    
+    # Multiple queries example
+    queries = [
+        UserInput("Quận 1", 1000000, 1500000, "premium", "2025-12-01", "2025-12-03", 5),
+        UserInput("Quận 3", 500000, 800000, "budget", "2025-12-10", "2025-12-12", 5),
+        UserInput("Bình Thạnh", 800000, 1200000, "family", "2025-12-15", "2025-12-17", 5),
+    ]
+    
+    rank_and_export(hotels, queries, output_dir="results", topN=10)
+    print("\n✓ Multiple queries exported to 'results/' directory")
