@@ -1,22 +1,4 @@
-/* Trong này bao gồm backgrounds, fonts, và container */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-/*Setting up backgrounds*/
-.background-main {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url("../assets/picture/background.jpg") center / cover no-repeat;
-    background-color: lightgray;
-    z-index: -1;
-}
 
 /*Fonts*/
 .paragraph200Medium_white {
@@ -55,6 +37,15 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+}
+
+.paragraph100Medium_white {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
 }
 
 .paragraph200regular {
@@ -102,61 +93,20 @@ body {
     line-height: 28px;
 }
 
+.button200regular {
+    color: var(--Theme-Primary, #7B61FF);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
 .button-text {
     color: var(--Theme-White, #FFF);
-
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
-
-    text-decoration: none;
-    position: relative;
-    cursor: pointer;
-}
-
-/*Main menu container*/
-.mainmenu-container {
-    position: relative;
-}
-
-.logo-container {
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-container img {
-    width: 87.6px;
-    height: auto;
-}
-
-.slogan-container {
-    position: absolute;
-    top: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.button-text::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0%;
-    height: 1px;
-    background-color: #FFF;
-    transition: 0.3s ease;
-}
-
-.button-text:hover::after {
-    width: 100%;
 }

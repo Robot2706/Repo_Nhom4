@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*Setting up backgrounds*/
+.background-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("../../assets/picture/background.jpg") center / cover no-repeat;
+    background-color: lightgray;
+    z-index: -1;
+}
+
+.glass-btn {
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+
+    transform: translateX(-50%);
+    white-space: nowrap;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.glass-btn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 180px;
+    height: 30px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+/*Main menu container*/
+.mainmenu-container {
+    position: relative;
+}
+
+.logo-container {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    width: 87.6px;
+    height: auto;
+}
+
+.slogan-container {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Liquid gradient */
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Main menu assets */
+.search-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1140px;
+    height: 60px;
+    padding: 8px 16px;
+    gap: 80px;
+    white-space: nowrap;
+
+    position: absolute;
+    top: 550px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 12px;
+    background: var(--Theme-White, #FFF);
+}
+
+
+.input-search-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    background: var(--Theme-White, #FFF);
+    padding: 8px 16px;
+    border-radius: 12px;
+
+    width: max-content;
+    max-width: 300px;
+    flex-shrink: 1;
+}
+
+
+.text-search-row {
+    position: absolute;
+    transform: translateX(36px);
+}
